@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:provider_architecture/core/models/post.dart';
+
+import '../../core/viewmodels/home_model.dart';
 
 class PostListItem extends StatelessWidget {
   final Post post;
@@ -25,8 +28,19 @@ class PostListItem extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text(post.title, style: TextStyle(fontWeight: FontWeight.w900, fontSize: 16.0),),
-            Text(post.body, maxLines: 2, overflow: TextOverflow.ellipsis)
+            ListTile(
+              title: Text(
+                post.title,
+                style: TextStyle(fontWeight: FontWeight.w900, fontSize: 16.0),
+              ),
+              subtitle:
+                  Text(post.body, maxLines: 2, overflow: TextOverflow.ellipsis),
+              trailing: IconButton(icon: Icon(Icons.delete),
+              onPressed: (){
+                Provider.of<HomeModel>(context, listen: false).deletePost(post);
+              },
+              ),
+            )
           ],
         ),
       ),

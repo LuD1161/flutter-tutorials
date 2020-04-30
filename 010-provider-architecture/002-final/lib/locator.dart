@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:provider_architecture/core/services/database.dart';
 
 import 'core/services/api.dart';
 import 'core/services/authentication_service.dart';
@@ -11,6 +12,7 @@ GetIt locator = GetIt.instance;
 void setupLocator() {
   locator.registerLazySingleton(() => AuthenticationService());
   locator.registerLazySingleton(() => Api());
+  locator.registerLazySingleton(() => DatabaseHelper());
 
   locator.registerFactory(() => LoginModel());
   locator.registerFactory(() => HomeModel());

@@ -21,4 +21,26 @@ class Post {
     data['body'] = this.body;
     return data;
   }
+
+  // Convert a Note object into a map object
+  Map<String, dynamic> toMap(){
+    var map = Map<String, dynamic>();
+    if(id != null){
+      map['id'] = id;
+    }
+    map['userId'] = this.userId;
+    map['id'] = this.id;
+    map['title'] = this.title;
+    map['body'] = this.body;
+
+    return map;
+  }
+
+  // Extract a Note object from a Map Object
+  Post.fromMapObject(Map<String, dynamic> map){
+    this.id = map['id'];
+    this.title = map['title'];
+    this.body = map['body'];
+    this.userId = map['userId'];
+  }
 }

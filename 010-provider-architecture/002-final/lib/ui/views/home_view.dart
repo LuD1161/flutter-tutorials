@@ -15,7 +15,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseView<HomeModel>(
-      onModelReady: (model) => model.getPosts(Provider.of<User>(context).id),
+      onModelReady: (model) => model.getPosts(1),
       builder: (context, model, child) => Scaffold(
         backgroundColor: backgroundColor,
         body: model.state == ViewState.Busy
